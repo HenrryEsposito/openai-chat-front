@@ -70,7 +70,7 @@ const ChatComponent: React.FC = () => {
             setMessage('');
         } catch (error) {
             console.error('Error sending message:', error);
-            setConversationHistory(prev => [...prev, { role: 'ai', content: 'Ocorreu um erro ao processar a mensagem' }]);
+            setConversationHistory(prev => [...prev, { role: 'assistant', content: 'Ocorreu um erro ao processar a mensagem' }]);
         } finally {
             setIsLoading(false);
         }
