@@ -16,7 +16,6 @@ export const ChatContainer = styled.div`
 `;
 
 export const ResponseArea = styled.div<{ role: string }>`
-  /* width: 80%; */
   padding: 10px;
   background-color: ${props => props.role === 'user' ? '#d1ecf1' : '#f8f9fa'};
   border: 1px solid ${props => props.role === 'user' ? '#bee5eb' : '#dee2e6'};
@@ -25,6 +24,44 @@ export const ResponseArea = styled.div<{ role: string }>`
   align-self: ${props => props.role === 'user' ? 'flex-end' : 'flex-start'};
   text-align: ${props => props.role === 'user' ? 'right' : 'left'};
   color: ${props => props.role === 'user' ? '#0c5460' : '#495057'};
+
+  .flight-card {
+    background-color: #0057b312;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+  .flight-header {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    h3 {
+      font-size: .8rem;
+      text-align: center;
+    }
+
+    div {
+      display: flex;
+    }
+  }
+
+  .flight-details {
+    background-color: #0057b311;
+    padding: 10px;
+    border-radius: 5px;
+
+    p {
+      font-weight: medium;
+    }
+  }
 `;
 
 export const ChatFooter = styled.div`

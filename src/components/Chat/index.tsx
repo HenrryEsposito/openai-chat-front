@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { ChatContainer, ChatFooter, ChatInput, ResponseArea, SendButton } from './styles';
+import { ConversationItem } from './interfaces';
+import ReactHtmlParser from 'react-html-parser';
 
 const ChatComponent: React.FC = () => {
     const [message, setMessage] = useState('');
-    const [conversationHistory, setConversationHistory] = useState<Array<{ role: string; content: string; tool_calls?: object }>>(
-        []
-    );
+    const [conversationHistory, setConversationHistory] = useState<Array<ConversationItem>>([]);
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
@@ -55,7 +55,7 @@ const ChatComponent: React.FC = () => {
             {conversationHistory.filter(entry => (entry.role === 'assistant' && !entry.tool_calls) || entry.role === 'user').map((entry, index) => (
                 <ResponseArea key={index} role={entry.role}>
                     {entry.role === 'user' ? '' : 'Assistente: '}
-                    {entry.content}
+                    {ReactHtmlParser(entry.content as string)}
                 </ResponseArea>
             ))}
 
