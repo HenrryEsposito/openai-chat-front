@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ChatContainer, ChatFooter, ChatInput, ResponseArea, SendButton } from './styles';
 import { ConversationItem } from './interfaces';
 import ReactHtmlParser from 'react-html-parser';
+import toast from 'react-hot-toast';
 
 const ChatComponent: React.FC = () => {
     const [message, setMessage] = useState('');
@@ -13,6 +14,12 @@ const ChatComponent: React.FC = () => {
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            toast.success('Dica: Tente prompts como "Quero passagens de Nova York para São Paulo" ou "Quero comprar passagens de Brasilia para o Rio de Janeiro"');
+        }, 3000);
+    }, []);
 
     useEffect(() => {
         scrollToBottom()
@@ -36,6 +43,7 @@ const ChatComponent: React.FC = () => {
             setMessage('');
         } catch (error) {
             console.error('Error sending message:', error);
+            toast.error('Ocorreu um erro ao processar a mensagem, por favor recarregue a página e tente novamente');
             setConversationHistory(prev => [...prev, { role: 'assistant', content: 'Ocorreu um erro ao processar a mensagem' }]);
         } finally {
             setIsLoading(false);
