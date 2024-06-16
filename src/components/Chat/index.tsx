@@ -27,7 +27,7 @@ const ChatComponent: React.FC = () => {
         setConversationHistory(prev => [...prev, newMessage]);
 
         try {
-            const result = await axios.post('http://localhost:5005/chat', {
+            const result = await axios.post(`${import.meta.env.VITE_BACK_URL}/chat`, {
                 message,
                 conversationHistory: conversationHistory
             });
