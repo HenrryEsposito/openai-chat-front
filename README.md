@@ -60,8 +60,6 @@ Ajuste de acordo com as chaves que você possuir.
 
 No arquivo `package.json`, temos os seguintes scripts:
 
-- **`dev`**: Roda a aplicação em modo de desenvolvimento.
-
 npm run dev
 Acesse http://localhost:5173 (porta padrão do Vite) para visualizar no navegador.
 
